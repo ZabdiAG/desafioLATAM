@@ -100,9 +100,9 @@ class ProductsController < ApplicationController
         :description => "This is the payment transaction description." }]})
     if @payment.create
       # Redirect the user to given approval url
-      redirect_to action: "show", id: @product.id
+      render json: {"payment_id" => @payment.id}
     else
-      render json: @payment.error
+      render json: {"error" => @payment.error}
     end
   end
 
